@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">
+            <![CDATA[jdbc:mysql://localhost:3306/hibernate?useUnicode=true&characterEncoding=utf8]]>
+        </property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">123456</property>
+        <property name="dialect">org.hibernate.dialect.MySQL57InnoDBDialect</property>
+        <property name="format_sql">true</property>
+        <property name="show_sql">true</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <!-- DB schema will be updated if needed -->
+        <property name="hbm2ddl.auto">create</property>
+<!--        <mapping class="org.robbie.otm.Student"/>
+        <mapping class="org.robbie.otm.Grade"/>-->
+<!--        <mapping class="org.robbie.otm2.Student"/>
+        <mapping class="org.robbie.otm2.Grade"/>-->
+<!--        <mapping class="org.robbie.mto.Student"/>
+        <mapping class="org.robbie.mto.Grade"/>-->
+        <mapping class="org.robbie.oto.Student"/>
+        <mapping class="org.robbie.oto.Grade"/>
+<!--        <mapping class="org.robbie.mtm.Student"/>
+        <mapping class="org.robbie.mtm.Teacher"/>-->
+<!--        <mapping class="org.robbie.mtm2.Student"/>
+        <mapping class="org.robbie.mtm2.Teacher"/>-->
+        <!--<mapping resource="StudentEntity.hbm.xml"/>-->
+    </session-factory>
+</hibernate-configuration>
