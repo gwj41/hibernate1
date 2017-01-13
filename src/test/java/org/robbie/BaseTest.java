@@ -13,7 +13,7 @@ import org.junit.After;
 import org.junit.Before;
 
 /**
- * Created by guxm on 2017/1/10.
+ * Create {@link org.hibernate.SessionFactory}, {@link Session}
  */
 public class BaseTest {
     private Configuration configuration;
@@ -56,9 +56,9 @@ public class BaseTest {
 
     @After
     public void destroy() {
-        if (transaction != null)
+        if (transaction != null && transaction.isActive())
         transaction.commit();
-        if (session != null)
+        if (session != null && session.isOpen())
         session.close();
         if (sessionFactory != null)
         sessionFactory.close();
@@ -66,5 +66,9 @@ public class BaseTest {
 
     public Session getSession() {
         return session;
+    }
+
+    protected Session createSession() {
+        return sessionFactory.openSession();
     }
 }

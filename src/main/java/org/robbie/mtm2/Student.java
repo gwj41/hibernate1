@@ -33,15 +33,15 @@ public class Student implements Serializable,Cloneable{
             joinColumns = {@JoinColumn(name = "Student_id")},inverseJoinColumns = {@JoinColumn(name = "Teacher_id")})
     private Set<Teacher> teachers;
 
-//    public StudentEntity() {
-//    }
-//
-//    public StudentEntity(long id, String name, String gender, int age) {
-//        this.id = id;
-//        this.name = name;
-//        this.gender = gender;
-//        this.age = age;
-//    }
+    public Student() {
+    }
+
+    public Student(String name, String gender, int age, Date birthday) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+        this.birthday = birthday;
+    }
 
     public Long getId() {
         return id;

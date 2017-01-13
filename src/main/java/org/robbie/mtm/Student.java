@@ -1,7 +1,8 @@
 package org.robbie.mtm;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.robbie.Address;
-import org.robbie.mto.Grade;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,6 +11,8 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity(name = "mtm_student1")
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class Student implements Serializable,Cloneable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,12 +30,23 @@ public class Student implements Serializable,Cloneable{
     @Column
     @Lob
     private Blob picture;
+//    private byte[] picture;
     @Embedded
     private Address address;
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinTable(name = "teachers_students",schema = "hibernate",
             joinColumns = {@JoinColumn(name = "Student_id")},inverseJoinColumns = {@JoinColumn(name = "Teacher_id")})
     private Set<Teacher> teachers;
+
+    public Student() {
+    }
+
+    public Student(String name, String gender, int age, Date birthday) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+        this.birthday = birthday;
+    }
 
 //    public StudentEntity() {
 //    }
@@ -91,6 +105,14 @@ public class Student implements Serializable,Cloneable{
     public void setPicture(Blob picture) {
         this.picture = picture;
     }
+
+/*    public byte[] getPicture() {
+        return picture;
+    }
+
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
+    }*/
 
     public Address getAddress() {
         return address;

@@ -51,7 +51,8 @@ public class OneToOneTest extends BaseTest {
 
     @Test
     public void loadStudent() throws SQLException, IOException {
-        Student studentEntity = getSession().load(Student.class,new Long(2));
+        Student studentEntity = getSession().load(Student.class,new Long(1));
+        Student student = getSession().load(Student.class,new Long(1));// use session cache
         Blob picture = studentEntity.getPicture();
         InputStream inputStream = picture.getBinaryStream();
         BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream,inputStream.available());
