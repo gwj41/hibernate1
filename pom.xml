@@ -13,6 +13,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <hibernate.core.version>5.2.6.Final</hibernate.core.version>
+        <spring.framework.version>4.3.5.RELEASE</spring.framework.version>
         <ehcache.version>3.2.0</ehcache.version>
     </properties>
     <build>
@@ -67,7 +68,27 @@
             <artifactId>commons-collections4</artifactId>
             <version>4.1</version>
         </dependency>
-<!--        <dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.framework.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.ehcache</groupId>
             <artifactId>ehcache</artifactId>
             <version>${ehcache.version}</version>
@@ -76,7 +97,7 @@
             <groupId>javax.cache</groupId>
             <artifactId>cache-api</artifactId>
             <version>1.0.0</version>
-        </dependency>-->
+        </dependency>
         <!--      <dependency>
                   <groupId>javax.persistence</groupId>
                   <artifactId>persistence-api</artifactId>
